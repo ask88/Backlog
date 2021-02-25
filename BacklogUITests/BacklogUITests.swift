@@ -22,13 +22,32 @@ class BacklogUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testLoginLogout() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let emailTextfield = app.textFields["Enter Email:"]
+        let passwordTextfield = app.secureTextFields["Enter Password:"]
+        let loginButton = app.buttons.matching(identifier: "Login")
+        
+        emailTextfield.tap()
+        emailTextfield.typeText("test@test.com")
+        
+        passwordTextfield.doubleTap()
+        app.waitForExistence(timeout: 10)
+        UIPasteboard.general.string = "test12"
+        passwordTextfield.doubleTap()
+        app.menuItems["Paste"].tap()
+        
+        app.waitForExistence(timeout: 10)
+        loginButton.element(boundBy: 1).doubleTap()
+        app.waitForExistence(timeout: 10)
+        
+        app.collectionViews.cells.element(boundBy: 0).tap()
+    
+        app.waitForExistence(timeout: 10)
+        app.buttons.element(boundBy: 0).doubleTap()
     }
 
     func testLaunchPerformance() throws {
