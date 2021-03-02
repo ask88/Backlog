@@ -156,7 +156,9 @@ extension SearchViewController: UITextFieldDelegate {
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let gameInfoViewController = GameInfoViewController(gameDetails: GameModel(id: "0", title: "0", subtitle: "0"))
+        gameInfoViewController.modalPresentationStyle = .fullScreen
+        self.present(gameInfoViewController, animated: true, completion: nil)
     }
 }
 

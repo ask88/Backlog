@@ -77,7 +77,6 @@ class LoginView {
         button.frame = CGRect(x: 0, y: 0, width: 50, height: 0)
         button.setTitle("Show", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        //button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         
         container.addSubview(textField)

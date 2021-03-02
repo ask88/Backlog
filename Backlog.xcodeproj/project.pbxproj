@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,6 +33,11 @@
 		33EE52E125E7FB3100304856 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE52DE25E7FB3100304856 /* UserModel.swift */; };
 		33EE52E225E7FB3100304856 /* LoginRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE52DF25E7FB3100304856 /* LoginRegisterModel.swift */; };
 		33EE52E725E7FBF300304856 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33EE52E625E7FBF300304856 /* GoogleService-Info.plist */; };
+		33EE530825EB295400304856 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE530725EB295400304856 /* VerificationView.swift */; };
+		33EE530E25EBF62E00304856 /* VerificationLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE530D25EBF62E00304856 /* VerificationLauncher.swift */; };
+		33EE531625ED178700304856 /* SideMenuLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE531525ED178700304856 /* SideMenuLauncher.swift */; };
+		33EE531B25ED63A700304856 /* GameInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE531A25ED63A700304856 /* GameInfoViewController.swift */; };
+		33EE532025EDB9DA00304856 /* LikeDislikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE531F25EDB9DA00304856 /* LikeDislikeView.swift */; };
 		3E6BEA5CFC5CA2737BFBC6D9 /* Pods_Backlog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 754A30C36351B8D47DBF305B /* Pods_Backlog.framework */; };
 		42132C05FE90D26F6F394374 /* Pods_Backlog_BacklogUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D12BDDF2A8AC3B5FC64CB60 /* Pods_Backlog_BacklogUITests.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +93,11 @@
 		33EE52DE25E7FB3100304856 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		33EE52DF25E7FB3100304856 /* LoginRegisterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegisterModel.swift; sourceTree = "<group>"; };
 		33EE52E625E7FBF300304856 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		33EE530725EB295400304856 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
+		33EE530D25EBF62E00304856 /* VerificationLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationLauncher.swift; sourceTree = "<group>"; };
+		33EE531525ED178700304856 /* SideMenuLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuLauncher.swift; sourceTree = "<group>"; };
+		33EE531A25ED63A700304856 /* GameInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoViewController.swift; sourceTree = "<group>"; };
+		33EE531F25EDB9DA00304856 /* LikeDislikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDislikeView.swift; sourceTree = "<group>"; };
 		41842842C8ABEC1A2DA3D80F /* Pods-BacklogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BacklogTests.debug.xcconfig"; path = "Target Support Files/Pods-BacklogTests/Pods-BacklogTests.debug.xcconfig"; sourceTree = "<group>"; };
 		436822D51C3755114FA7689F /* Pods-Backlog-BacklogUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backlog-BacklogUITests.debug.xcconfig"; path = "Target Support Files/Pods-Backlog-BacklogUITests/Pods-Backlog-BacklogUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		48CDE619702B6B134CB38718 /* Pods-Backlog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Backlog.debug.xcconfig"; path = "Target Support Files/Pods-Backlog/Pods-Backlog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +160,7 @@
 		33EE527C25E7F9CE00304856 /* Backlog */ = {
 			isa = PBXGroup;
 			children = (
+				33EE530C25EBF5F400304856 /* Launchers */,
 				33EE52DC25E7FB2600304856 /* Models */,
 				33EE52C825E7FB1500304856 /* Views */,
 				33EE52B625E7FAF200304856 /* ViewControllers */,
@@ -191,6 +202,7 @@
 				33EE52BC25E7FB0300304856 /* MainViewController.swift */,
 				33EE52BB25E7FB0300304856 /* SearchViewController.swift */,
 				33EE52BD25E7FB0300304856 /* SplashScreenViewController.swift */,
+				33EE531A25ED63A700304856 /* GameInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -206,6 +218,8 @@
 				33EE52CF25E7FB2200304856 /* PopinMenuView.swift */,
 				33EE52CC25E7FB2100304856 /* QueriedSearchCell.swift */,
 				33EE52CE25E7FB2100304856 /* SearchCell.swift */,
+				33EE530725EB295400304856 /* VerificationView.swift */,
+				33EE531F25EDB9DA00304856 /* LikeDislikeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -218,6 +232,15 @@
 				33EE52DE25E7FB3100304856 /* UserModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		33EE530C25EBF5F400304856 /* Launchers */ = {
+			isa = PBXGroup;
+			children = (
+				33EE530D25EBF62E00304856 /* VerificationLauncher.swift */,
+				33EE531525ED178700304856 /* SideMenuLauncher.swift */,
+			);
+			path = Launchers;
 			sourceTree = "<group>";
 		};
 		66486CFF2D848CA36B6FAA22 /* Frameworks */ = {
@@ -240,7 +263,6 @@
 				41842842C8ABEC1A2DA3D80F /* Pods-BacklogTests.debug.xcconfig */,
 				19134C4DB7C2ABC980952545 /* Pods-BacklogTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -486,6 +508,7 @@
 				33EE52D625E7FB2200304856 /* SearchCell.swift in Sources */,
 				33EE52D425E7FB2200304856 /* QueriedSearchCell.swift in Sources */,
 				33EE52BE25E7FB0300304856 /* CollectionViewController.swift in Sources */,
+				33EE531625ED178700304856 /* SideMenuLauncher.swift in Sources */,
 				33EE52D525E7FB2200304856 /* LoginView.swift in Sources */,
 				33EE52E225E7FB3100304856 /* LoginRegisterModel.swift in Sources */,
 				33EE52C225E7FB0300304856 /* SearchViewController.swift in Sources */,
@@ -493,15 +516,19 @@
 				33EE528225E7F9CE00304856 /* ViewController.swift in Sources */,
 				33EE527E25E7F9CE00304856 /* AppDelegate.swift in Sources */,
 				33EE52E025E7FB3100304856 /* GameModel.swift in Sources */,
+				33EE530E25EBF62E00304856 /* VerificationLauncher.swift in Sources */,
 				33EE52D325E7FB2200304856 /* NavigationBarView.swift in Sources */,
+				33EE532025EDB9DA00304856 /* LikeDislikeView.swift in Sources */,
 				33EE52D825E7FB2200304856 /* CollectionCell.swift in Sources */,
 				33EE52BF25E7FB0300304856 /* LoginViewController.swift in Sources */,
 				33EE52D225E7FB2200304856 /* BacklogCell.swift in Sources */,
 				33EE52C325E7FB0300304856 /* MainViewController.swift in Sources */,
 				33EE52C125E7FB0300304856 /* HomeViewController.swift in Sources */,
 				33EE52C425E7FB0300304856 /* SplashScreenViewController.swift in Sources */,
+				33EE530825EB295400304856 /* VerificationView.swift in Sources */,
 				33EE52E125E7FB3100304856 /* UserModel.swift in Sources */,
 				33EE528025E7F9CE00304856 /* SceneDelegate.swift in Sources */,
+				33EE531B25ED63A700304856 /* GameInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

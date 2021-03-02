@@ -10,7 +10,7 @@ import Firebase
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     var user: UserModel?
     
     var homeCell: HomeCell?
@@ -18,24 +18,8 @@ class MainViewController: UIViewController {
     var collectionCell: CollectionCell?
     var backlogCell: BacklogCell?
     
-    var popinMenuViewTrailingAnchor: NSLayoutConstraint?
-    var containerViewLeadingAnchor: NSLayoutConstraint?
-    var containerViewTrailingAnchor: NSLayoutConstraint?
-    
-    let initialPage = 0
-    
-    let popinMenuView = PopinMenuView()
     let navigationBarView = NavigationBarView()
-    
-    private var initialCenter: CGPoint = .zero
-    
-    let blackView: UIView = {
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        view.backgroundColor = UIColor(cgColor: CGColor(red: 0, green: 0, blue: 0, alpha: 0.5))
-        view.alpha = 0
-        return view
-    }()
+    let sideMenuLauncher = SideMenuLauncher()
     
     let containerView: UIView = {
         let view = UIView()
@@ -72,24 +56,22 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .white
         view.addSubview(containerView)
-        view.addSubview(popinMenuView.view)
+        view.addSubview(sideMenuLauncher.popinMenuView.view)
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
         setupContainerView()
-        popinMenuView.setupView()
-        setupPopinMenuView()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        view.addGestureRecognizer(tap)
+        //view.addGestureRecognizer(tap)
         
         homeCell  = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier, for: IndexPath(row: 0, section: 0)) as? HomeCell
         searchCell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.identifier, for: IndexPath(row: 1, section: 0)) as? SearchCell
         collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCell.identifier, for: IndexPath(row: 2, section: 0)) as? CollectionCell
         backlogCell = collectionView.dequeueReusableCell(withReuseIdentifier: BacklogCell.identifier, for: IndexPath(row: 3, section: 0)) as? BacklogCell
         
-        popinMenuView.logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        //popinMenuView.logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
         
         display(contentController: HomeViewController(), on: homeCell!.contentView)
     }
@@ -102,18 +84,10 @@ class MainViewController: UIViewController {
         navigationBarView.backlogButton.addTarget(self, action: #selector(backlog), for: .touchUpInside)
     }
     
-    func setupPopinMenuView() {
-        popinMenuView.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        popinMenuView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        popinMenuView.view.widthAnchor.constraint(equalToConstant: popinMenuView.view.frame.width).isActive = true
-        popinMenuViewTrailingAnchor = popinMenuView.view.trailingAnchor.constraint(equalTo: containerView.leadingAnchor)
-        popinMenuViewTrailingAnchor?.isActive = true
-    }
-    
     func setupContainerView() {
         containerView.addSubview(collectionView)
         containerView.addSubview(navigationBarView.view)
-        containerView.addSubview(blackView)
+        containerView.addSubview(sideMenuLauncher.blackView)
         
         setupCollectionView()
         navigationBarView.setupView()
@@ -122,12 +96,9 @@ class MainViewController: UIViewController {
         containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        containerViewLeadingAnchor = containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-        containerViewTrailingAnchor = containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        
-        containerViewLeadingAnchor?.isActive = true
-        containerViewTrailingAnchor?.isActive = true
-    }
+        containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        }
     
     func setupCollectionView() {
         collectionView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
@@ -168,23 +139,8 @@ class MainViewController: UIViewController {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        if self.popinMenuView.isDisplayed {
-            self.popinMenuView.isDisplayed = false
-            UIView.animate(withDuration: 0.5) {
-                self.blackView.alpha = 0
-                self.containerViewLeadingAnchor?.constant = 0
-                self.containerViewTrailingAnchor?.constant = 0
-                self.view.layoutIfNeeded()
-            }
-        } else {
-            self.popinMenuView.isDisplayed = true
-            UIView.animate(withDuration: 0.5) {
-                self.blackView.alpha = 1
-                self.containerViewLeadingAnchor?.constant = 200
-                self.containerViewTrailingAnchor?.constant = 200
-                self.view.layoutIfNeeded()
-            }
-        }
+        sideMenuLauncher.launchSideMenu()
+        view.layoutIfNeeded()
     }
     
     @objc func logout() {

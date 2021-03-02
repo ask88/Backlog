@@ -15,8 +15,8 @@ class PopinMenuView {
     let view: UIView = {
         let view = UIView()
         view.backgroundColor = .orange
-        view.frame = CGRect(x: 0, y: 0, width: 200, height: 0)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 10
+        view.frame = CGRect(x: -200, y: UIScreen.main.bounds.maxY - 300, width: 200, height: 300)
         return view
     }()
     
